@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Movies</title>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    min-height:100vh;
+    padding:40px 20px;
+}
+
+h1{
+    color:#8C2E3E;
+    margin-bottom:40px;
+}
+
+.container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    max-width:1200px;
+}
+
+.card{
+
+    /* WARNA DITUKAR */
+    background:#EDE6D4;
+
+    width:220px;
+    padding:15px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+
+.card h3{
+    color:#8C2E3E;
+}
+
+.product-img{
+    width:150px;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+    position:relative;
+}
+
+button{
+    background:#867B18;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:10px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#8C2E3E;
+}
+
+.detail{
+    display:none;
+    margin-top:10px;
+    color:#444;
+}
+
+.notif{
+    display:none;
+    background:#B46A77;
+    color:white;
+    padding:10px;
+    border-radius:8px;
+    margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Nadya's Favorite Movies</h1>
+<p>Nadya Naylaturrahmah - TI 2B - 2507411051</p>
+
+<div class="container">
+
+    <!-- ITEM 1 -->
+    <div class="card">
+
+        <img src="https://i.pinimg.com/1200x/e9/37/00/e93700b352593409c175762cc4bd4b55.jpg"
+        class="product-img">
+
+        <h3>First Love</h3>
+
+        <button class="detailBtn">
+            Show Details
+        </button>
+
+        <button class="cartBtn">
+            Add to Watchlist
+        </button>
+
+        <div class="detail">
+            Kisah cinta pertama dua remaja yang dipertemukan kembali setelah bertahun-tahun terpisah.
+        </div>
+
+        <div class="notif">
+            Added to watchlist!
+        </div>
+
+    </div>
+
+    <!-- ITEM 2 -->
+    <div class="card">
+
+        <img src="https://i.pinimg.com/1200x/36/fc/07/36fc075fa8f62dd0dc11e6abb08a0229.jpg"
+        class="product-img">
+
+        <h3>Lost and Found</h3>
+
+        <button class="detailBtn">
+            Show Details
+        </button>
+
+        <button class="cartBtn">
+            Add to Watchlist
+        </button>
+
+        <div class="detail">
+            Dua orang kesepian perlahan saling menemukan harapan melalui pertemuan yang tidak disengaja.
+        </div>
+
+        <div class="notif">
+            Added to watchlist!
+        </div>
+
+    </div>
+
+    <!-- ITEM 3 -->
+    <div class="card">
+
+        <img src="https://i.pinimg.com/736x/f1/3c/64/f13c648f1a0b4af1eb19c3539eafb046.jpg"
+        class="product-img">
+
+        <h3>Pride and Prejudice</h3>
+
+        <button class="detailBtn">
+            Show Details
+        </button>
+
+        <button class="cartBtn">
+            Add to Watchlist
+        </button>
+
+        <div class="detail">
+            Elizabeth Bennet dan Mr. Darcy belajar mengatasi gengsi serta prasangka demi cinta.
+        </div>
+
+        <div class="notif">
+            Added to watchlist!
+        </div>
+
+    </div>
+
+    <!-- ITEM 4 -->
+    <div class="card">
+
+        <img src="https://i.pinimg.com/1200x/fa/7f/02/fa7f02df0df57effe6d38ff3de3064e4.jpg"
+        class="product-img">
+
+        <h3>Monster</h3>
+
+        <button class="detailBtn">
+            Show Details
+        </button>
+
+        <button class="cartBtn">
+            Add to Watchlist
+        </button>
+
+        <div class="detail">
+            Dua anak laki-laki yang tumbuh dengan jiwa yang suci di tengah dunia yang penuh kesalahpahaman.
+        </div>
+
+        <div class="notif">
+            Added to watchlist!
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+$(document).ready(function(){
+
+    $(".detailBtn").click(function(){
+
+        let card = $(this).parent();
+
+        let img = card.find(".product-img");
+
+        let detail = card.find(".detail");
+
+        let button = $(this);
+
+        
+        if(detail.is(":hidden")){
+
+            img.stop().animate({
+
+                width:'200px',
+                height:'300px',
+                marginLeft:'10px'
+
+            }, 800, function(){
+
+                detail.slideDown();
+
+            });
+
+            button.text("Hide Details");
+
+        }
+
+        
+        else{
+
+            detail.slideUp();
+
+            img.stop().animate({
+
+                width:'150px',
+                height:'200px',
+                marginLeft:'0px'
+
+            }, 800);
+
+            button.text("Show Details");
+
+        }
+
+    });
+    $(".cartBtn").click(function(){
+
+        let notif = $(this).siblings(".notif");
+
+        notif
+            .fadeIn(500)
+            .delay(1000)
+            .fadeOut(500);
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
